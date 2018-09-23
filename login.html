@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <title>Login</title>
+  </head>
+  <body>
+    <div id="loginPlace">
+      <div id="headTitle">
+
+      </div>
+      <div id="loginform">
+        <form action="index.html" method="post">
+          <p>username : </p>
+          <input type="text" name="usernameEdit" placeholder="Email"></br>
+          <p>password : </p>
+          <input type="password" name="passwordEdit" value="" placeholder="passowrd"></br>
+          <input id="loginBtn" type="button" name="loginBtn" value="login" onclick="login(this.form)"></br>
+          <a href="register.html">If you dont have ac, register here</a>
+        </form>
+
+      </div>
+    </div>
+
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+   var config = {
+     apiKey: "AIzaSyAAuBduu2r3WpH7OBDHWAuoE7P7yuNy1h0",
+     authDomain: "webtrial-d1acb.firebaseapp.com",
+     databaseURL: "https://webtrial-d1acb.firebaseio.com",
+     projectId: "webtrial-d1acb",
+     storageBucket: "webtrial-d1acb.appspot.com",
+     messagingSenderId: "592950268838"
+   };
+   firebase.initializeApp(config);
+   function login(form){
+     firebase.auth().signInWithEmailAndPassword(form.usernameEdit.value,form.passwordEdit.value).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  if (errorCode) {
+    alert("Wrong passwords of username" + errorCode);
+  }else{
+    alert("success");
+  }
+});
+}
+</script>
+</html>
